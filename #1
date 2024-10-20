@@ -1,0 +1,48 @@
+Level : Medium 
+Company :  Salesforce
+
+Problem Statement : The number 6174 is known as Kaprekar's contant, after the mathematician who discovered an associated property: for all four-digit numbers with at least two distinct digits, repeatedly applying a simple procedure eventually results in this value. The procedure is as follows:
+*For a given input x, create two new numbers that consist of the digits in x in ascending and descending order.
+*Subtract the smaller number from the larger number.
+
+ For example, this algorithm terminates in three steps when starting from 1234:
+4321 - 1234 = 3087
+8730 - 0378 = 8352
+8532 - 2358 = 6174
+Write a function that returns how many steps this will take for a given input N.
+
+Solution : 
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int helper(int n){
+    int count =0;
+    //The number 6174 is known as Kaprekar's contant
+    while(n != 6174){
+        string num = to_string(n);
+
+        while(num.length() < 4){
+            num = "0" + num ; // This ensures that if number is less than 4 digit , we will add 0s in it.
+        }
+        string asc = num;
+        string desc = num;
+        sort(asc.begin(), asc.end());
+        sort(desc.begin(), desc.end(), greater<char>());
+        
+        int small = stoi(asc);
+        int large = stoi(desc);
+        n = large - small;
+        count++;
+    }
+    return count;
+}
+
+
+int main() {
+int n;
+cin>>n;
+int ans = helper(n);
+cout << ans << endl;
+    return 0;
+}
