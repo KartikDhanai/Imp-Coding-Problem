@@ -1,0 +1,34 @@
+Level : Medium
+Company : Google
+Problem Statement : Invert a binary tree.
+
+For example, given the following tree:
+
+    a
+   / \
+  b   c
+ / \  /
+d   e f
+should become:
+
+  a
+ / \
+ c  b
+ \  / \
+  f e  d
+
+Solution :
+Node InvertBinaryTree(Node* root){
+       if(root == nullptr) return ;
+
+    // Swap the left and right children
+
+       Node* temp = root->left;
+       root->left = root->right;
+       root->right = temp;
+
+    // Recursively invert the left and right subtrees
+
+      InvertBinaryTree(root->left);
+      InvertBinaryTree(root->right);
+}
