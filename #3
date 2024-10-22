@@ -1,0 +1,38 @@
+Level : Easy
+Company : Netflix
+Problem Statement : Given an array of integers, determine whether it contains a Pythagorean triplet. Recall that a Pythogorean triplet (a, b, c) is defined by the equation a^2+ b^2= c^2.
+
+Solution : 
+#include<bits/stdc++.h>
+using namespace std;
+
+bool hasPythagoreanTriplet ( vector<int> & arr){
+
+int n = arr.size();
+
+    // Square all elements
+    for (int i = 0; i < n; i++) {
+        arr[i] = arr[i] * arr[i];
+    }
+
+    // Sort the array
+    sort(arr.begin(), arr.end());
+
+    // Now fix one element (as c^2) and use two-pointer technique to find the other two
+    for (int i = n - 1; i >= 2; i--) {
+        int left = 0;
+        int right = i - 1;
+        
+        while (left < right) {
+            if (arr[left] + arr[right] == arr[i]) {
+                return true;  // Pythagorean triplet
+            } else if (arr[left] + arr[right] < arr[i]) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+    }
+
+    return false;  // No Pythagorean triplet foun
+}
