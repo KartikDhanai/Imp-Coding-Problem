@@ -19,11 +19,4 @@ vector<int> func(vector<char> & Clues){
                 }
           return res;
         }
-
-
-
-
-
-
-
 }
