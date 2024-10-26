@@ -1,0 +1,29 @@
+Level : Medium
+Company : Pinterest
+Problem Statement : The sequence [0, 1, ..., N] has been jumbled, and the only clue you have for its order is an array representing whether each number is larger or smaller than the last. 
+Given this information, reconstruct an array that is consistent with it. 
+
+For example, given Clues = [None, +, +, -, +], you could return [1, 2, 3, 0, 4].
+
+Solution : 
+
+vector<int> func(vector<char> & Clues){
+          int n = Clues.size();
+          int low = 0 , high = n-1;
+          vector<int> res;
+          for(int i=0 ; i< n ;i++){
+                if( i == 0 and Clues[i] == '+')
+                        res[i] = low++;
+                else
+                         res[i] = high --;
+                }
+          return res;
+        }
+
+
+
+
+
+
+
+}
