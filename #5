@@ -28,10 +28,11 @@ while(n > 0){
  if( n & 1 ) {
       count++;
       maxx = max(maxx , count);
-                 }
+             }
  else{
      count = 0;
     }
+n = n >> 1;
 }
 return maxx;
 }
