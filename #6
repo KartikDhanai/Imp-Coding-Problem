@@ -1,0 +1,25 @@
+Problem Statement : Given 2 numbers, find the greatest common denominator between them.
+
+For example, given the numbers [10,15], return 5.
+
+Code : Euclidean algorithm 
+#include<bits/stdc++.h>
+using namespace std;
+
+int gcd(int a , int b){
+    if(a== 0) return b;
+    if(b == 0) return a;
+    if(a > b) return gcd(a-b, b);
+return gcd(a , b-a);
+}
+int main(){
+    int a;
+    cout<<"Enter 1st :" ;
+    cin >> a ;
+    int b ; 
+    cout<<"Enter 2nd :" ;
+    cin>>b;
+    int ans = gcd(a,b);
+    cout<< ans << endl;
+
+}
